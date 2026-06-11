@@ -45,4 +45,19 @@ public class RoleObj : SingletonBaseMono<RoleObj>
         ani.SetBool(newState.ToString(),true);
         state = newState;
     }
+
+    public virtual void Damage(int value)
+    {
+        hp -= value;
+        if (hp <= 0)
+        {
+            hp = 0;
+            Dead();
+        }
+    }
+
+    public virtual void Dead()
+    {
+        Destroy(gameObject);
+    }
 }
